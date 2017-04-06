@@ -6,7 +6,7 @@ import services.StreetSpecification;
 
 import java.util.List;
 
-public class StreetApp {
+public class StreetApp implements App {
 
     private final StreetSpecification streetSpecification;
 
@@ -52,6 +52,7 @@ public class StreetApp {
         System.out.println("Number of houses in the right hand side " + streetSpecification.numberOfHousesInRightHandSide());
     }
 
+    @Override
     public void process() {
         this.printStreetInfo();
         if (streetSpecification.isValid()) {

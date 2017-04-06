@@ -13,7 +13,7 @@ public class Main {
     }
 
     public static void bootstrap(List<Integer> houses) {
-        final StreetApp app = new StreetApp(houses);
+        final App app = new StreetApp(houses);
         app.process();
     }
 

@@ -15,6 +15,7 @@ dependencies {
     testCompile 'info.cukes:cucumber-java8:1.2.5'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
     testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile 'org.mockito:mockito-core:2.7.21'
 }
 
 jacocoTestReport {
@@ -26,7 +27,7 @@ jacocoTestReport {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'Main'
+        attributes 'Main-Class': 'Main'
     }
 }
 
