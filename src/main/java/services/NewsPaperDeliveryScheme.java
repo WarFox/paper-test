@@ -6,7 +6,7 @@ public interface NewsPaperDeliveryScheme {
 
     List<Integer> deliveryOrder();
 
-    long numberOfCrossings();
+    int numberOfCrossings();
 
     String getName();
 }

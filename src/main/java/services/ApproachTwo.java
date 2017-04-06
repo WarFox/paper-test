@@ -1,5 +1,7 @@
 package services;
 
+import utils.NumberUtils;
+
 import java.util.List;
 
 /**
@@ -7,19 +9,29 @@ import java.util.List;
  */
 public class ApproachTwo implements NewsPaperDeliveryScheme {
 
+    private final StreetSpecification streetSpecification;
+
     public ApproachTwo(StreetSpecification streetSpecification) {
-        super();
+        this.streetSpecification = streetSpecification;
     }
+
 
     @Override
     public List<Integer> deliveryOrder() {
-
-        return null;
+        return streetSpecification.getHousesNumbers();
     }
 
     @Override
-    public long numberOfCrossings() {
-        return 0;
+    public int numberOfCrossings() {
+        int previousNumber = streetSpecification.getHousesNumbers().get(0);
+        int numberOfCrossings = 0;
+        for (Integer houseNumber : streetSpecification.getHousesNumbers()) {
+            if (NumberUtils.isEven(previousNumber) ^ NumberUtils.isEven(houseNumber)) {
+                numberOfCrossings++;
+            }
+            previousNumber = houseNumber;
+        }
+        return numberOfCrossings;
     }
 
     @Override

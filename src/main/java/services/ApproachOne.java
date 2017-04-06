@@ -27,7 +27,7 @@ public class ApproachOne implements NewsPaperDeliveryScheme {
     }
 
     @Override
-    public long numberOfCrossings() {
+    public int numberOfCrossings() {
         return 1;
     }
 

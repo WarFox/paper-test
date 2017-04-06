@@ -71,7 +71,7 @@ public class StreetSpecification {
         return housesInRightHandSide().size();
     }
 
-    private List<Integer> getHousesNumbers() {
+    public List<Integer> getHousesNumbers() {
         return street.getHousesNumbers();
     }
 

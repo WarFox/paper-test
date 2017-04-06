@@ -40,12 +40,12 @@ public class NewspaperDeliveryStepsDef {
         assertThat(deliveryOrder).isEqualTo(houseNumbers);
     }
 
-    @And("^they will cross the road one time$")
+    @And("^will cross the road one time$")
     public void and_they_cross_the_road_one_time() throws Throwable {
         assertThat(deliveryScheme.numberOfCrossings()).isEqualTo(1);
     }
 
-    @And("^they will cross the road (\\d+) times$")
+    @And("^will cross the road (\\d+) times$")
     public void and_they_cross_the_road_n_times(int n) throws Throwable {
         assertThat(deliveryScheme.numberOfCrossings()).isEqualTo(n);
     }
