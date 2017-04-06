@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class StreetSpecification {
 
@@ -21,43 +22,57 @@ public class StreetSpecification {
     }
 
     public int startingHouseNumber() {
-        return street.getHousesNumbers()
+        return getHousesNumbers()
                 .stream()
                 .min(Comparator.<Integer>naturalOrder())
                 .orElse(0);
     }
 
     public int endingHouseNumber() {
-       return street.getHousesNumbers()
-               .stream()
-               .max(Comparator.<Integer>naturalOrder())
-               .orElse(0);
+        return getHousesNumbers()
+                .stream()
+                .max(Comparator.<Integer>naturalOrder())
+                .orElse(0);
     }
 
     public boolean hasDuplicates() {
-        final List<Integer> housesNumbers = street.getHousesNumbers();
+        final List<Integer> housesNumbers = getHousesNumbers();
         Set<Integer> set = new HashSet<Integer>(housesNumbers);
         return housesNumbers.size() != set.size();
     }
 
     public boolean hasMissingNumbers() {
-        return endingHouseNumber() != street.getHousesNumbers().size();
+        return endingHouseNumber() != getHousesNumbers().size();
     }
 
     public Integer numberOfHouses() {
-        return street.getHousesNumbers().size();
+        return getHousesNumbers().size();
     }
 
-    public long numberOfHousesInNorth() {
-        return street.getHousesNumbers()
+    public List<Integer> housesInLeftHandSide() {
+        return getHousesNumbers()
                 .stream()
-                .filter(NumberUtils::isOdd).count();
+                .filter(NumberUtils::isOdd)
+                .collect(Collectors.toList());
     }
 
-    public long numberOfHousesInSouth() {
-        return street.getHousesNumbers()
+    public List<Integer> housesInRightHandSide() {
+        return getHousesNumbers()
                 .stream()
-                .filter(NumberUtils::isEven).count();
+                .filter(NumberUtils::isEven)
+                .collect(Collectors.toList());
+    }
+
+    public long numberOfHousesInLeftHandSide() {
+        return housesInLeftHandSide().size();
+    }
+
+    public long numberOfHousesInRightHandSide() {
+        return housesInRightHandSide().size();
+    }
+
+    private List<Integer> getHousesNumbers() {
+        return street.getHousesNumbers();
     }
 
 }

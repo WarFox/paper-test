@@ -14,7 +14,7 @@ public class Main {
 
     public static void bootstrap(List<Integer> houses) {
         final StreetApp app = new StreetApp(houses);
-        app.printOutput();
+        app.process();
     }
 
 

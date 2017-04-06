@@ -15,16 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StreetSpecificationStepDef implements En {
 
     private boolean valid;
-    private List<Integer> houses;
     private long count;
-    private Street street;
     private StreetSpecification streetSpecification;
 
     @Given("the following street definition: (.*)")
-    public void given_the_following_street_definition(List<Integer> houses) {
-        this.houses = houses;
-        this.street = new Street(this.houses);
-        this.streetSpecification = new StreetSpecification(this.street);
+    public void given_the_following_street_definition(List<Integer> houseNumbers) {
+        Street street = new Street(houseNumbers);
+        this.streetSpecification = new StreetSpecification(street);
     }
 
     @When("checking for validity")
@@ -61,12 +58,12 @@ public class StreetSpecificationStepDef implements En {
     @When("^counting left hand side$")
     public void countingLeftHandSide() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        count = streetSpecification.numberOfHousesInNorth();
+        count = streetSpecification.numberOfHousesInLeftHandSide();
     }
 
     @When("^counting right hand side$")
     public void countingRightHandSide() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        count = streetSpecification.numberOfHousesInSouth();
+        count = streetSpecification.numberOfHousesInRightHandSide();
     }
 }
